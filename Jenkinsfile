@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        jdk 'Java17'   // The name you gave in Jenkins tool config
+        jdk 'Java17'   // Must match the name exactly
     }
     stages {
         stage('Checkout') {
