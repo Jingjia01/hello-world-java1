@@ -10,17 +10,23 @@ pipeline {
             }
         }
         stage('Build') {
-            steps { bat 'gradlew clean build'}
+            steps {
+                powershell '.\\gradlew clean build'
+            }
         }
         stage('Test') {
-            steps { bat 'gradlew test'}
+            steps {
+                powershell '.\\gradlew test'
+            }
         }
         stage('Deploy') {
-            steps { powershell 'java -jar build/libs/hello-world-java-V1.jar'}           
+            steps {
+                powershell 'java -jar build\\libs\\hello-world-java-V1.jar'
+            }           
         }    
-}
+    }
 
-post {
+    post {
         always {
             echo 'Cleaning up workspace'
             deleteDir() // Clean up the workspace after the build
